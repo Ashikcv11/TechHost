@@ -62,6 +62,8 @@ app.use(cors());
 
 //Register API
 app.post('/api/register', async (req,res)=> {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
         console.log('reached');
         const password= req.body.password;
         const confpassword= req.body.repeatPassword;
@@ -92,6 +94,8 @@ app.post('/api/register', async (req,res)=> {
 
 //Login API
 app.post('/api/login', async(req,res) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
         console.log(req.body);
@@ -117,6 +121,8 @@ app.post('/api/login', async(req,res) => {
 
     //admin login
       app.post('/api/admin/login', async(req,res) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
         console.log(req.body);
@@ -137,6 +143,8 @@ app.post('/api/login', async(req,res) => {
 
 //create post
 app.post('/api/posts/savepost',function(req,res){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
    console.log(req.body);
    const post = {       
         title : req.body.item.title,
@@ -209,6 +217,8 @@ app.get('/api/posts', function(req,res){
 
 //To display posts based on categories
 app.get('/api/posts/category/:category',  (req, res) => {
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     const id = req.params.id;
     postModel.find({"category":category})
       .then((posts)=>{
@@ -227,6 +237,8 @@ app.get('/api/posts/category/:category',  (req, res) => {
 //             })
 // })
 app.get('/api/singleblog/:id',(req, res)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     const id = req.params.id;
     postModel.findOne({'_id':id})
     .then((i)=>{
@@ -239,6 +251,8 @@ app.get('/api/singleblog/:id',(req, res)=>{
 
 //To change approved value on approval by admin
 app.put('/api/admin/approve',(req,res)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     console.log("backend")
     id=req.body._id,
     
@@ -253,6 +267,8 @@ app.put('/api/admin/approve',(req,res)=>{
 
 //To delete the post data on rejection by admin
 app.delete('/api/admin/deny/:id',(req,res)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
    
     id = req.params.id;
     postModel.findByIdAndDelete({"_id":id})
