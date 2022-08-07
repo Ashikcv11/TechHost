@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 // });
 
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true }).then(()=>{
-    console.log("Database Connection Successful...")
+    console.log("Database Connection 2 Successful...")
 }).catch((err)=>{
  console.log(err)
 });
