@@ -17,8 +17,9 @@ app.use(express.static(`./dist/front-end`));
 // const multer = require('multer');
 
 
-const bodyparser = require ('body-parser')
+//const bodyparser = require ('body-parser')
 app.use(bodyparser.json());
+app.use(cors());
 
 
 // app.use(express.json());
