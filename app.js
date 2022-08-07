@@ -1,4 +1,4 @@
-require('./config/config');
+// require('./config/config');
 const userModel = require('./src/model/UserModel');
 const postModel = require('./src/model/PostModel');
 
